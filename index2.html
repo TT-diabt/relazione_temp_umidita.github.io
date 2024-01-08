@@ -2,60 +2,100 @@
 <html lang="en">
 <head>
     <center>
-        <h1>Relazione su circuito di rilevazione e monitoraggio temperatura</h1>
-    </center>
-    <hr>
+    <h1>Rilevazione e Monitoraggio di Temperatura ed Umidità</h1>
+</center>
+<hr>
+<link rel="stylesheet" href="style5.css">
 
-    <link rel="stylesheet" href="style2.css">
-    <style>
-        img{
-            display: block;
-            margin: auto;
-        }
-    </style>
+
+<link rel="stylesheet" href="style1.css">
+<style>
+    img{
+        display: block;
+        margin: auto;
+    }
+</style>
+
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+ 
 </head>
 <body>
-</div>
-<img src="cartellone/fotodimostrazione.jpeg" height="600">
-<p align="left">Questa relazione è la seconda parte dello studio che ho svolto a scuola riguardante il sistema di conversione analogico digitale</p><br>
-<p align="left">in questa parte illustrerò il processo che ho svolto fino ad arrivare alla costruzione del circuito che permette l'accensione di coppie di led al raggiungimento di determinati intervalli di temperatura</p>
-<p align="left">per la costruzione di questo circuito ho utilizzato gli stessi concetti teorici che ho utilizzato nella precedente esercitazione pratica</p>
-<p align="left">visto che pure  questo circuito rileva grandezze variabili(temperatura) che quindi sono caratterizzate da segnali di tensione analogici all'uscita dal trasduttore</p>
-<p align="left">è necessario anche per questo circuito  svolgere il processo di quantizzazione per convertire il segnale analogico in uno digitale suddividendolo in  livelli di tensione</p>
-<p align="left">Ed ognuno di questi livelli verrà codificato associandogli un unico valore di tensione</p>
-<p align="left">per far ciò ho deciso pure in questo caso di dividere il segnale analogico in 1024 livelli non perché necessitassi di utilizzare un minimo di 10bit ma perché aumentando il numero di livelli in cui si suddivide il segnale aumenta la precisione della lettura della temperatura </p><br>
+    <div class="header">
 
-<p align="left">inseguito alla scelta dei parametri fondamenti per la costruzione del circuito sono passato alla sua costruzione</p>
-<img src="cartellone/fotodimostrazione.jpeg" height="600">
+    </div>
+    <img src="cartellone/sfondo rela.jpeg" height="550">
+    <br>
+    <all
+    <center>
+    <p align="left">Con questa relazione mostro il processo che ho svolto per programmare ed costruire il circuito rappresentato nell'immagine.</p>
+    
+    
+    <p align="left">Questo circuito ha lo scopo di rilevare la temperatura ed l'umidità dell' ambiente in cui è posto ed inseguito di visualizzare su un pannello rgb i valori precedentemente rilevati, facendo alternare a ogni secondo la visualizzazione di valori di temperatura a quelli di umidità.</p>
+   
+   <p align="left">Per essere in grado di svolgere tale funzione il circuito è dotato di un fondamentale componente ovvero il sensore digitale DHT11; il quale ha la funzione di ricavare valori di temperatura ed umidità .</p>
+   <img src="cartellone/foto2DHT11.jpeg" height="220">
 
-<p align="left"> inseguito sono passato alla scrittura del programma con il quale ho dato le specifiche istruzioni al circuito per la coretta esecuzione della sua funzione ovvero far eccendere a coppie dei led a determinate soglie di temperatura</p>
+   <h1>Realizzazione del circuito</h1>
+
+   
+    
+   
+    <img src="cartellone/pin dht11.png" height="272" align="left">
+    <p align="left">A seguito dell' acquisizione di informazioni riguardanti il funzionamento del circuito ed la funzione che esso doveva svolgere mi sono informato riguardo la piedinatura del componente DHT11 per riuscire a  svolgere collegamenti corretti tra esso ed la scheda arduino.</p><br>    
+    <hr><p align="left">Dopo l'acquisizione di queste fondamentali informazioni ho costruito su breadboard il seguente circuito utilizzando i componenti presenti nell' immagine.</p>
+    
+    <img src="cartellone/collegamenti.png" height="520"align="left"><p align="left">(1 resistenza, 1 sensoreDHT11, ed una scheda arduino uno)</p><br><br>
+     
+   
+    <p align="left">Per la realizzazione del circuito  ho posizionato sulla breadboard il componente DHT11  ed sotto ad esso ho posizionato  parallelamente una resistenza proprio come mostrato nell'immagine.</p>
+    <p align="left">Ed dopo ciò ho eseguito i collegamenti tra la breadboard ed la scheda arduino nel seguente modo: prima ho collegato al + il primo piedino del sensore dht11, inseguito il secondo a il pin digitale 9  della scheda arduino, terzo piedino al GND ed al quarto piedino ho collegato il - .</p>
 
 
+    
 
-<p align="left">per far ciò ho scelto un intervallo di temperatura ed ad esso ho associato l'accensione di due led e lo spegnimento degli altri</p>
-<img src="cartellone/voidSetup.png" height="400">
-<p align="left">In questa immagine ho fornito al programma i pin a i quali sono collegati i diodi led oltre a utilizzare gli operatori matematici per far calcolare alla scheda arduino la Vi del livello in questione utilizzando la formula Vi = livello * Δv ed inseguito ho diviso per 10 poiche la costante k del trasduttore di temperatura moltiplica per 10 il valore della temperatura rilevata</p>
-<img src="cartellone/20e22.png" height="400">
-<p align="left">Inseguito ho scelto quali coppie di led accendere, in questa immagine per temperature minori di 20° ho fatto spengnere tutti i led</p>
 
-<img src="cartellone/tuttispentiVero.jpeg" height="500">
-<p align="left">Mentre per temperature minori di 22 gradi ho fatto accendere solo il pin 8</p>
-<img src="cartellone/22gradi.jpeg" height="500">
-<img src="cartellone/24e26.png" height="400">
-<p align="left">Mentre per temperature inferiori a 24° ho dato tensione solo a i pin 8 e9</p>
-<img src="cartellone/24gradi.jpeg" height="500">
-<p align="left">Invece per temperature inferiori di 26° ho dato tensione a i pin 8 , 9, 10</p>
-<img src="cartellone/sotto26.jpeg" height="500">
-<p align="left">Ed per le temperature inferiori a 28° ho fatto accendere i led dei pin 8, 9, 10, 11</p>
-<img src="cartellone/sotto28.jpeg" height="500">
-<img src="cartellone/28e30.png"height="400">
-<p align="left">ed per ultimo ho fatto accendere tutti i led per temperature superiori a 30°</p>
-<img src="cartellone/sopra30gradi.jpeg"height="500">    
-<h2>Conclusione</h2>
-<p align="left">in conclusione sono riuscito a raggiungere lo scopo dell' esercitazione pratica riuscendo  a programmare l'accensione e spegnimento  di diodi led in base a intervalli di temperatura</p>
+<br><br><br><br>
+
+<br><br><br><br>
+
+<br><br><br><br>
+
+<h1>Fase di programmazione</h1>
+<p align="left">Successivamente alla costruzione del circuito ho iniziato la  fase di scrittura del programma con la quale ho dato istruzioni  al circuito riguardanti quali funzioni dovesse svolgere.</p>
+<p align="left">Per far ciò  ho innanzitutto costruito un  diagramma di flusso per poter visualizzare più facilmente l'ordine nel quale dovevo impartire istruzioni al circuito.</p>
+<h2>diagramma di flusso</h2>
+<a href="https://app.moqups.com/1Z5r0yPMd611tUQQa5rm3HKW7j1zwEwN/view/page/a9ba8f34d" target="_blank">
+    <button type="button"><span></span>Diagramma di flusso</button>
+</a>
+<h2>scrittura programma</h2>
+<p align="left">Ed inseguito allo sviluppo del diagramma di flusso sono passato alla scrittura del programma seguendo punto per punto le operazioni descritte nel diagramma di flusso</p>
+
+
+<img src="cartellone/1FotoProg.png" height="520"align="center"><br>
+<p align="left">All'inizio del programma ho aggiunto le librerie  necessarie per il controllo del pannello rgb ed il componente DHT11, inseguito ho dichiarato le variabili di : temperatura - umidità - controllo.</p>
+    
+<p align="left">Dopo ciò ho dichiarato i pin occupati dal sensore DHT11 e dal pannello rgb.</p><br>
+<p align="left">Successivamente  ho impostato i parametri del pannello rgb  modificando l'intensità della luminosità, il colore ed la modalità con la quale si presenta il messaggio da visualizzare sul display con il comando setTextwrap(false);
+</p><br>
+<p align="left">Ed con il comando matrix()begin  ho preparo all' uso il pannello rgb ed specifico le sue dimensioni.</p>
+
+<img src="cartellone/2FotoProg.png" height="520"align="center"><br>
+
+<p align="left">Inseguito ho cambiato i parametri del pannello nel seguente modo: partendo dal messaggio con le informazioni inerenti la temperatura ambientale ho reso rossa l'illuminazione dei diodi led del pannello, con il comando setCursor(0,0) ho dato le coordinate dalla quale inizia a generarsi il messaggio, ed con il comando matrix.print("T") ho fatto visualizzare nel punto di coordinate (0,0) la lettera "T" ed dopo ciò ho fatto visualizzare il messaggio con le informazioni della temperatura con il comando matrix.print(temperatura),</p>
+<p align="left">Poi con il comando matrix.setCursor(26,0) ho spostato il punto di coordinate dalla quale si generano i messaggi per poter visualizzare la lettera "C" nel bordo destro del pannello per permette di specificare che le misurazioni sono in gradi centigradi</p>
+<p align="left">Ed per ultimo con i comandi matrix.show() e delay(1000) ho fatto visualizzare sul pannello tutti i messaggi precedentemente scritti ovvero T : (messaggio variabile di temperatura ) C  con frequenza di 1 secondo e dopo ciò ho ripristinato il pannello con il comando matrix.clear. Ed fatto ripetere il ciclo.</p>
+
+<img src="cartellone/3FotoProg.png" height="520"align="center"><br>
+<p align="left">In questa immagine ho concluso la scrittura del programma seguendo l'algoritmo  precedentemente usato per la visualizzazione del messaggio con le informazioni di temperatura, ma con modifiche come: il colore dei diodi led del pannello che verde, la lettera al bordo sinistro è "U" per indicare la misura di umidità mentre al bordo destro è presente  "%" per indicare che la misura è percentuale</p><br>
+<h1 align="center">Risultato</h1>
+
+<video controls src="videoGiusto - Realizzato con Clipchamp.mp4" width="1100" align="right">
+
+    <p align="left">
+        
+    </script>
 </body>
 </html>
